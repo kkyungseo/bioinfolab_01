@@ -5,7 +5,7 @@ from PyQt5 import uic, QtCore
 from mainfail import MainFailClass
 form_class = uic.loadUiType("maindemo.ui")[0]
 
-class OpeningWindow(QMainWindow, form_class):
+class MainWindow(QMainWindow, form_class):
 
     def __init__(self):
         super().__init__()
