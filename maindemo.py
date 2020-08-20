@@ -53,18 +53,11 @@ class OpeningWindow(QMainWindow, form_class):
         open_cellLineWindow.show()
 
 
-
-    try:
-        openSurvivalMainWindow()
-
-    except:
-
-
-
-
-
-
-
+        if openSurvivalMainWindow():#survival window가 눌렀을 때는 열리게 하고
+        
+        else:
+            #mainfail창을 보여주라!
+        
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
