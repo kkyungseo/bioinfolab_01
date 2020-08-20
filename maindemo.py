@@ -1,9 +1,10 @@
 import sys
 
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QGraphicsView, QLabel, QMenuBar, QMenu, QStatusBar, QAction, qApp
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton, QGraphicsView, QLabel, QMenuBar, QMenu, QStatusBar, QAction, qApp, QMessageBox
 from PyQt5 import uic, QtCore
-
+from mainfail import MainFailClass
 form_class = uic.loadUiType("maindemo.ui")[0]
+
 class OpeningWindow(QMainWindow, form_class):
 
     def __init__(self):
@@ -24,7 +25,6 @@ class OpeningWindow(QMainWindow, form_class):
         self.btn_CRISPR.clicked.connect(self.open_sgRNAWindow)
         self.btn_cellline.clicked.connect(self.open_CellLineWindow)
 
-        ### exit function of menubar menuExit
         actionExit = QAction('&Exit', self)
         actionExit.setShortcut('Ctrl+Q')
         actionExit.setStatusTip('Exit Application')
@@ -36,28 +36,34 @@ class OpeningWindow(QMainWindow, form_class):
 
         self.show()
 
-    def openSurvivalMainWindow():
-        openSurvivalMainWindow = SurvivalMainWindow()
-        openSurvivalMainWindow.show()
+    def openSurvivalMainWindow(self):
+        try:
+            open_SurvivalMainWindow = SurvivalMainWindow()
+            open_SurvivalMainWindow.show()
+        except:
+            open_fail + MainFailClass()
+            open_fail.show()
 
     def openDrugWindow(self):
-        openDrugWindow = DrugWindow()
-        openDrugWindow.show()
+        try:
+            open_DrugWindow = DrugWindow()
+            open_DrugWindow.show()
+        except:
+            open_fail = MainFailClass()
+            open_fail.show()
 
     def opensgRNAWindow(self):
-        opensgRNAWindow = sgRNAWindow()
-        opensgRNAWindow.show()
+        try:
+            open_sgRNAWindow = sgRNAWindow()
+            open_sgRNAWindow.show()
+        except:
+            open_fail = MainFailClass()
+            open_fail.show()
 
     def openCellLineWindow(self):
-        open_cellLineWindow = scatterWindow()
-        open_cellLineWindow.show()
-
-
-        if btn_survival.clicked.connect(self.open_SurvivalMainWindow): 
-            openSurvivalMainWindow()
-            
-        
-        else:
-            openMainFailWindow.show()
-            
-        
+        try:
+            open_CellLineWindow = scatterWindow()
+            open_CellLineWindow.show()
+        except:
+            open_fail = MainFailClass()
+            open_fail.show()
